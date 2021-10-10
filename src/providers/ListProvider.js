@@ -9,45 +9,59 @@ export const useList = () => useContext(ListContext)
 export const ListProvider = ({children}) => {
 
     const [list,setList] = useState([])
-    const [partyList,setPartyList] = useState([])
-    const [gradList,setGradList] = useState([])
-    const [wedList,setWedList] = useState([])
+    const [partyList,setPartyList] = useState(JSON.parse(localStorage.getItem('party')) || [])
+    const [gradList,setGradList] = useState(JSON.parse(localStorage.getItem('graduation')) || [])
+    const [wedList,setWedList] = useState(JSON.parse(localStorage.getItem('wedding')) || [])
 
     const addW = (item) => {
 
-        
-        setWedList([...wedList, {
+        const newItem = {
             ...item,
             code: Math.random() *(1000 - 1) + 1,
-            elt: 'true'
-        }])
-        console.log(wedList)
+            elt: 'wedding'
+        }
+
+        const storageList = JSON.parse(localStorage.getItem('wedding')) || []
+        storageList.push(newItem)
+        localStorage.setItem('wedding', JSON.stringify(storageList))
+        setWedList(storageList)
     }
 
     const addG = (item) => {
 
-        console.log(gradList.volume)
-
-        setGradList([...gradList, {
+        const newItem = {
             ...item,
             code: Math.random() *(1000 - 1) + 1,
-            elt: 'true'
-        }])
+            elt: 'graduation'
+        }
+
+        const storageList = JSON.parse(localStorage.getItem('graduation')) || []
+        storageList.push(newItem)
+        localStorage.setItem('graduation', JSON.stringify(storageList))
+
+        setGradList(storageList)
     }
+
     const addP = (item) => {
 
-        console.log(partyList.volume)
-
-        setPartyList([...partyList, {
+        const newItem = {
             ...item,
             code: Math.random() *(1000 - 1) + 1,
-            elt: 'true'
-        }])
+            elt: 'party'
+        }
+
+        const storageList = JSON.parse(localStorage.getItem('party')) || []
+        storageList.push(newItem)
+        localStorage.setItem('party', JSON.stringify(storageList))
+
+        setPartyList( storageList)
     }
 
-    const rmv = (lista, codigo, set) => {
+    const rmv = (lista, codigo, set, item) => {
 
-        set(lista.filter((elt) => elt.code !== codigo))
+     const filterList = lista.filter((elt) => elt.code !== codigo)
+     localStorage.setItem(item.elt, JSON.stringify(filterList))
+     set(filterList)
 
     }
     

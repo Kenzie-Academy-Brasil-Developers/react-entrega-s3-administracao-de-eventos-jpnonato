@@ -64,8 +64,7 @@ export default function Home(){
             <Container>
                 {
                     partyList.map((elt) => <Display item={elt} lista={partyList} set={setPartyList}></Display>)
-                }
-             
+                } 
             </Container>
         </Main>
     )

@@ -23,7 +23,7 @@ export default function Display({item, lista, set}){
                      <Button onClick={() => addP(item)}> add confraternização</Button>
                      </>
                      : 
-                     <Button onClick={() => rmv(lista, item.code,set)}>Remover</Button>
+                     <Button onClick={() => rmv(lista, item.code,set, item)}>Remover</Button>
                 }
              </section>
          </ItemDisplay>

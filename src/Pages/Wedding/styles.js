@@ -37,6 +37,7 @@ export const Main = styled.div`
 
 export const Container = styled.section`
    display: flex;
+   justify-content: center;
    flex-wrap: wrap;
 
 `

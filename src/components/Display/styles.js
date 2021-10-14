@@ -31,7 +31,7 @@ export const ItemDisplay = styled.div`
     
 
     
-    @media screen and (min-width: 700px){
+    @media screen and (min-width: 750px){
         width: 357px;
         height: 300px;
 
@@ -42,9 +42,7 @@ export const ItemDisplay = styled.div`
             height: 95%;
         }
         
-        h4{
-           font-size: 10px;
-        }
+       
     }
 
 `
